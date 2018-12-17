@@ -1,262 +1,65 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8" />
-    <!--
-      <link rel="stylesheet" type="text/css" href="dep/normalize.css/normalize.css" />
-      <link rel="stylesheet" type="text/css" href="dep/Font-Awesome/css/font-awesome.css" />
-    <-->
-    <link rel="stylesheet" type="text/css" href="resouces\scripts\style.css" />
-    <script src="resouces\scripts\jquery.js" type="text/javascript"></script>
-    <script src="resouces\scripts\main.js" type="text/javascript"></script>
-    
-    <style>
-       
-        a{
-          text-decoration:none;
-          color:#f30;	
-        }
-        p{
-          clear:both;
-          margin:0;
-          padding:.5em 0;
-        }
-        pre{
-          display:block;
-          font:100% "Courier New", Courier, monospace;
-          padding:10px;
-          border:1px solid #bae2f0;
-          background:#e3f4f9;	
-          margin:.5em 0;
-          overflow:auto;
-          width:800px;
-        }
-        
-        img{border:none;}
-        
-        
-        #screenshot{
-          position:absolute;
-          border:1px solid #ccc;
-          background:#333;
-          padding:0px;
-          display:none;
-          color:#fff;
-          }
-        
-        /*  */
-        </style>
-        
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Welcome to Firebase Hosting</title>
+
+    <!-- update the version number as needed -->
+    <script defer src="/__/firebase/5.7.0/firebase-app.js"></script>
+    <!-- include only the Firebase features as you need -->
+    <script defer src="/__/firebase/5.7.0/firebase-auth.js"></script>
+    <script defer src="/__/firebase/5.7.0/firebase-database.js"></script>
+    <script defer src="/__/firebase/5.7.0/firebase-messaging.js"></script>
+    <script defer src="/__/firebase/5.7.0/firebase-storage.js"></script>
+    <!-- initialize the SDK after all desired features are loaded -->
+    <script defer src="/__/firebase/init.js"></script>
+
+    <style media="screen">
+      body { background: #ECEFF1; color: rgba(0,0,0,0.87); font-family: Roboto, Helvetica, Arial, sans-serif; margin: 0; padding: 0; }
+      #message { background: white; max-width: 360px; margin: 100px auto 16px; padding: 32px 24px; border-radius: 3px; }
+      #message h2 { color: #ffa100; font-weight: bold; font-size: 16px; margin: 0 0 8px; }
+      #message h1 { font-size: 22px; font-weight: 300; color: rgba(0,0,0,0.6); margin: 0 0 16px;}
+      #message p { line-height: 140%; margin: 16px 0 24px; font-size: 14px; }
+      #message a { display: block; text-align: center; background: #039be5; text-transform: uppercase; text-decoration: none; color: white; padding: 16px; border-radius: 4px; }
+      #message, #message a { box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24); }
+      #load { color: rgba(0,0,0,0.4); text-align: center; font-size: 13px; }
+      @media (max-width: 600px) {
+        body, #message { margin-top: 0; background: white; box-shadow: none; }
+        body { border-top: 16px solid #ffa100; }
+      }
+    </style>
   </head>
-  <body lang="en">
-    <section id="main">
-      <header id="title">
-        <h1>Enkh Baterdene</h1>
-        <span class="subtitle">Hardware / Software Engineer</span>
-      </header>
-      <section class="main-block">
-        <h2>
-          <i class="fa fa-suitcase"></i> Experiences
-        </h2>
-        <section class="blocks">
-          <div class="date">
-            <span>2018</span><span>present</span>
-          </div>
-          <div class="decorator">
-          </div>
-          <div class="details">
-            <header>
-              <h3>Associate Engineer</h3>
-              <span class="place"><a href="https://www.att.com/" class="screenshot" rel="resouces\images\AT&T.png">AT&T</a> through 
-                <a href="https://www.infosys.com/" class="screenshot" rel="resouces\images\Infosys-Pune.jpg">Infosys</a>
-              </span>
-              <span class="location">Irving, TX</span>
-            </header>
-            <div>
-              <ul>
-                <li>Res1</li>
-                <li>Res2</li>
-              </ul>
-              </div>
-          </div>
-        </section>
-        <section class="blocks">
-          <div class="date">
-            <span>2014</span><span>2018</span>
-          </div>
-          <div class="decorator">
-          </div>
-          <div class="details">
-            <header>
-              <h3>Math Tutor</h3>
-              <span class="place">
-                <a href="https://www.perctutoring.com/" class="screenshot" rel="resouces\images\percTutoring.png">PERC</a> & 
-                <a href="https://www.sylvanlearning.com/" class="screenshot" rel="resouces\images\sylvanLearningCenter.jpg">Sylvan Learning Center</a></span>
-              <span class="location">Tacoma, WA</span>
-            </header>
-            <div>
-              <ul>
-                <li>Prepare students for SAT/ACT.</li>
-                <li>Teach math subjects: beginner Algebra through advanced Calculus.</li>
-                <li>Tutored Computer Science concepts, and Algorithms and Data Structures.</li>
-              </ul>
-            </div>
-          </div>
-        </section>
-        <section class="blocks">
-          <div class="date">
-            <span>2013</span><span>2014</span>
-          </div>
-          <div class="decorator">
-          </div>
-          <div class="details">
-            <header>
-              <h3>Software Engineering Intern</h3>
-              <span class="place">
-                <a href="https://parametricportfolio.com/" class="screenshot" rel="resouces\images\parametricPortfolio.png" title="Parametric Portfolio">Parametric Portfolio</a>
-                
-              </span>
-              <span class="location">Seattle, WA</span>
-            </header>
-            <div>
-              <ul>
-                <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit</li>
-              </ul>
-              </div>
-          </div>
-        </section>
-      </section>
-      <section class="main-block">
-        <h2>
-          <i class="fa fa-folder-open"></i> Selected Projects
-        </h2>
-        <section class="blocks">
-          <div class="date">
-            <span>02/2018</span><span>03/2018</span>
-          </div>
-          <div class="decorator">
-          </div>
-          <div class="details">
-            <header>
-              <h3>Full Stack Applications</h3>
-              <span class="place">Spring Boot, Angular 4, Rest API, Hibernate, SQL Criteria Query</span>
-            </header>
-            <div>
-              <ul>
-                <li>Front-end with Angular 4/Node JS/HTML/CSS where client side object are interfaced with HTTP Requests/Responses via JSON complex models to accomplish GET/POST operations.
-                </li>
-                <li>Back-end Rest API with Dependency Injection for Auto wiring the framework that takes the entities; permeates to the down Service Layer that communicates with the Data Access Layer which supports Transactional sessions within Repository functionalities utilizing Criteria Builder Queries to push and pull the entity that is in Oracle Database.
-                </li>
-              </ul>
-            </div>
-          </div>
-        </section>
-        <section class="blocks">
-          <div class="date">
-            <span>2014</span><span>2015</span>
-          </div>
-          <div class="decorator">
-          </div>
-          <div class="details">
-            <header>
-              <h3>Some Project 2</h3>
-              <span class="place">Some workplace</span>
-            </header>
-            <div>
-              <ul>
-                <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin nec mi ante. Etiam odio eros, placerat eu metus id, gravida eleifend odio. Vestibulum dapibus pharetra odio, egestas ullamcorper ipsum congue ac. Maecenas viverra tortor eget convallis vestibulum. Donec pulvinar venenatis est, non sollicitudin metus laoreet sed. Fusce tincidunt felis nec neque aliquet porttitor</li>
-              </ul>
-            </div>
-          </div>
-        </section>
-        <section class="blocks">
-          <div class="date">
-            <span>2014</span>
-          </div>
-          <div class="decorator">
-          </div>
-          <div class="details">
-            <header>
-              <h3>Some Project 3</h3>
-              <span class="place">Some workplace</span>
-            </header>
-            <div>
-              <ul>
-                <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin nec mi ante. Etiam odio eros, placerat eu metus id, gravida eleifend odio</li>
-              </ul>
-            </div>
-          </div>
-        </section>
-      </section>
-      <section class="main-block concise">
-        <h2>
-          <i class="fa fa-graduation-cap"></i> Education
-        </h2>
-        <section class="blocks">
-          <div class="date">
-            <span>2017</span><span>2014</span>
-          </div>
-          <div class="decorator">
-          </div>
-          <div class="details">
-            <header>
-              <h3>B.S. in Computer Engineering</h3>
-              <h3>B.S. in Computer Science and Systems</h3>
-              <h3>Minor in Matematics</h3>
-              <span class="place">University of Washington</span>
-              <span class="location">Tacoma, WA</span>
-            </header>
-            <div>Focused on Signal Processing, Cryptography, and Sofware Fields. </div>
-            <div>Dean's List - 2017 </div>
-          </div>
-        </section>
-        <section class="blocks">
-          <div class="date">
-            <span>2014</span><span>2013</span>
-          </div>
-          <div class="decorator">
-          </div>
-          <div class="details">
-            <header>
-              <h3>A.S Matematics </h3>
-              <span class="place">North Seattle College</span>
-              <span class="location">Seattle, WA</span>
-            </header>
-            <div>Focused on Discrete Matematics</div>
-          </div>
-        </section>
-      </section>
-    </section>
-    <aside id="sidebar">
-      <div class="side-block" id="contact">
-        <h1>
-          Contact Info
-        </h1>
-        <ul>
-          <!-- <li><i class="fa fa-globe"></i> something.something</li>-->
-          <li><i class="fa fa-linkedin"></i> linkedin.com/in/<a href="http://linkedin.com/in/enkhe">enkhe</a></li>
-          <li><i class="fa fa-envelope"></i> enkh@uw.edu</li>
-          <li><i class="fa fa-phone"></i> 206-602.7194</li>
-        </ul>
-      </div>
-      <div class="side-block" id="skills">
-        <h1>
-          Skills
-        </h1>
-        <ul>
-          <li><a href="http://microservices.com/">Microservices</a></li>
-          <li><a href="http://angular.io">Angular 6</a></li>
-          <li><a href="http://restapi.com">Rest API</a></li>
-        </ul>
-        <ul>
-          <li>Logical</li>
-          <li>Clean Code</li>
-          <li>Attention to Details</li>
-        </ul>
-      </div>
-      <div class="side-block" id="disclaimer">
-        &copy; Enkh
-      </div>
-    </aside>
+  <body>
+    <div id="message">
+      <h2>Welcome</h2>
+      <h1>Firebase Hosting Setup Complete</h1>
+      <p>You're seeing this because you've successfully setup Firebase Hosting. Now it's time to go build something extraordinary!</p>
+      <a target="_blank" href="https://firebase.google.com/docs/hosting/">Open Hosting Documentation</a>
+    </div>
+    <p id="load">Firebase SDK Loading&hellip;</p>
+
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        // // 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
+        // // The Firebase SDK is initialized and available here!
+        //
+        // firebase.auth().onAuthStateChanged(user => { });
+        // firebase.database().ref('/path/to/ref').on('value', snapshot => { });
+        // firebase.messaging().requestPermission().then(() => { });
+        // firebase.storage().ref('/path/to/ref').getDownloadURL().then(() => { });
+        //
+        // // 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
+
+        try {
+          let app = firebase.app();
+          let features = ['auth', 'database', 'messaging', 'storage'].filter(feature => typeof app[feature] === 'function');
+          document.getElementById('load').innerHTML = `Firebase SDK loaded with ${features.join(', ')}`;
+        } catch (e) {
+          console.error(e);
+          document.getElementById('load').innerHTML = 'Error loading the Firebase SDK, check the console.';
+        }
+      });
+    </script>
   </body>
 </html>
