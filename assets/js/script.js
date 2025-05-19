@@ -134,10 +134,11 @@ class PageRenderer {
       <section class="tutorials-section">
         <h2>Tutorials</h2>
         <ul>
-          <li><a href="https://github.com/enkhe/html-examples" target="_blank">HTML Examples</a></li>
-          <li><a href="https://github.com/enkhe/css-examples" target="_blank">CSS Examples</a></li>
-          <li><a href="https://github.com/enkhe/js-examples" target="_blank">JavaScript Examples</a></li>
-          <li><a href="https://github.com/enkhe/react-examples" target="_blank">React Examples</a></li>
+          <li><a href="https://github.com/enkhe/HTML-CSS-JS/HTML" target="_blank">HTML Examples</a></li>
+          <li><a href="https://github.com/enkhe/HTML-CSS-JS/CSS" target="_blank">CSS Examples</a></li>
+          <li><a href="https://github.com/enkhe/HTML-CSS-JS/JS" target="_blank">JavaScript Examples</a></li>
+          <li><a href="https://github.com/enkhe/HTML-CSS-JS/React" target="_blank">React Examples</a></li>
+          <li><a href="https://github.com/enkhe/HTML-CSS-JS/React-Native" target="_blank">React Native Examples</a></li>
         </ul>
       </section>
     `;
