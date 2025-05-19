@@ -1,0 +1,168 @@
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Arial, sans-serif;
+  background: linear-gradient(135deg, #e0e7ff 0%, #f8fafc 100%);
+  min-height: 100vh;
+}
+
+header {
+  background: rgba(255, 255, 255, 0.25);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.18);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-radius: 16px;
+  border: 1px solid rgba(255,255,255,0.18);
+  position: sticky;
+  top: 0;
+  z-index: 1030;
+  color: #222;
+  padding: 1rem;
+  text-align: center;
+}
+
+/* Sidebar for desktop */
+.side-menu {
+  position: fixed;
+  top: 80px; /* adjust if header height changes */
+  left: 0;
+  width: 220px;
+  height: calc(100vh - 120px); /* adjust for header/footer */
+  z-index: 1020;
+  border-radius: 16px;
+  margin-left: 16px;
+  margin-top: 0;
+  margin-bottom: 0;
+  overflow-y: auto;
+}
+
+.side-menu a {
+  color: #fff;
+  text-decoration: none;
+  padding: 0.75rem 1rem;
+  transition: background 0.2s;
+}
+
+.side-menu a:hover {
+  background: #444;
+}
+
+main {
+  margin-left: 240px;
+  padding: 2rem;
+  min-height: calc(100vh - 112px);
+}
+
+footer {
+  background: rgba(255, 255, 255, 0.25);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.18);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-radius: 16px;
+  border: 1px solid rgba(255,255,255,0.18);
+  position: sticky;
+  bottom: 0;
+  z-index: 1030;
+  color: #fff;
+  text-align: center;
+  padding: 1rem;
+  width: 100%;
+}
+
+/* Ensure hamburger menu is visible on mobile */
+.navbar-toggler.d-md-none {
+  display: inline-flex !important;
+  border: none;
+  background: transparent;
+  box-shadow: none;
+  outline: none;
+}
+
+/* Make sure the hamburger icon is visible */
+.navbar-toggler-icon {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(33, 37, 41, 0.7)' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+  width: 2em;
+  height: 2em;
+}
+
+@media (min-width: 768px) {
+  .navbar-toggler.d-md-none {
+    display: none !important;
+  }
+}
+
+/* Responsive */
+@media (max-width: 700px) {
+  .side-menu {
+    position: static;
+    width: 100%;
+    flex-direction: row;
+    justify-content: space-around;
+    top: auto;
+    left: auto;
+    padding: 0.5rem 0;
+  }
+  main {
+    margin-left: 0;
+    padding: 1rem;
+  }
+}
+
+@media (max-width: 767.98px) {
+  .side-menu {
+    display: none !important;
+  }
+  .glass-main {
+    margin-left: 0 !important;
+  }
+}
+
+/* Sidebar for desktop */
+@media (min-width: 768px) {
+  .glass-main {
+    margin-left: 240px;
+    max-width: calc(100% - 260px);
+  }
+  .side-menu {
+    width: 240px;
+    left: 0;
+    top: 80px;
+    height: calc(100vh - 120px);
+    position: fixed;
+    z-index: 1020;
+    border-radius: 16px;
+    margin-left: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+    overflow-y: auto;
+  }
+}
+@media (max-width: 767.98px) {
+  .glass-main {
+    margin-left: 0 !important;
+    max-width: 100%;
+  }
+}
+
+.nav .nav-link {
+  color: #222;
+  font-weight: 500;
+  border-radius: 8px;
+  transition: background 0.2s, color 0.2s;
+  padding: 0.75rem 1rem;
+}
+
+.nav .nav-link.active,
+.nav .nav-link:hover {
+  background: rgba(25, 118, 210, 0.18);
+  color: #1976d2;
+  font-weight: bold;
+}
+
+.home-section, .resume-section, .tutorials-section {
+  animation: fadeIn 0.5s;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(16px);}
+  to { opacity: 1; transform: none;}
+}
