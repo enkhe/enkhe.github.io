@@ -166,3 +166,142 @@ footer {
   from { opacity: 0; transform: translateY(16px);}
   to { opacity: 1; transform: none;}
 }
+
+/* Resume 2 Page Styles */
+.resume2-section {
+  display: flex;
+  gap: 2.5rem;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 16px rgba(0,0,0,0.04);
+  padding: 2.5rem 2rem;
+  margin: 0 auto 2rem auto;
+  max-width: 950px;
+  font-size: 1.08rem;
+  color: #222;
+}
+.resume2-sidebar {
+  flex: 0 0 220px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+}
+.resume2-main {
+  flex: 1 1 0%;
+}
+.resume2-section .avatar {
+  width: 140px;
+  height: 140px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 3px solid #e0e7ff;
+  margin-bottom: 1rem;
+}
+.resume2-section .my-name {
+  font-size: 1.5rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  text-align: center;
+}
+.resume2-section .my-title {
+  color: #1976d2;
+  font-size: 1.1rem;
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+  text-align: center;
+}
+.resume2-section .links {
+  margin-bottom: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  align-items: center;
+}
+.resume2-section .link-item {
+  font-size: 1rem;
+  color: #222;
+  display: flex;
+  align-items: center;
+  gap: 0.3em;
+}
+.resume2-section .link-item a {
+  color: #1976d2;
+  text-decoration: none;
+  margin-left: 0.25rem;
+}
+.resume2-section .link-item a:hover {
+  text-decoration: underline;
+}
+.resume2-section .icon {
+  vertical-align: middle;
+  margin-right: 0.2em;
+  fill: #1976d2;
+}
+.resume2-section .section-title {
+  font-size: 1.15rem;
+  font-weight: 600;
+  margin-bottom: 1.2rem;
+  margin-top: 2.2rem;
+  color: #222;
+}
+.resume2-section .job {
+  margin-bottom: 1.5rem;
+}
+.resume2-section .job-company {
+  font-weight: 600;
+  font-size: 1.08rem;
+}
+.resume2-section .job-title {
+  font-size: 1rem;
+  color: #444;
+}
+.resume2-section .job-title-container {
+  margin-bottom: 0.2rem;
+}
+.resume2-section .skills-container ul {
+  list-style: disc inside;
+  padding-left: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+.resume2-section .skills-container li {
+  margin-bottom: 0.2rem;
+}
+.resume2-section .interests-container img {
+  margin-right: 0.5rem;
+  margin-bottom: 0.5rem;
+  border-radius: 8px;
+  background: #f3f6fa;
+  padding: 4px;
+  box-shadow: 0 1px 4px rgba(25, 118, 210, 0.07);
+}
+@media (max-width: 900px) {
+  .resume2-section {
+    flex-direction: column;
+    gap: 1.5rem;
+    padding: 1.2rem 0.5rem;
+  }
+  .resume2-sidebar {
+    flex-direction: row;
+    justify-content: flex-start;
+    gap: 1.5rem;
+  }
+  .resume2-section .my-name, .resume2-section .my-title {
+    text-align: left;
+  }
+  .resume2-section .links {
+    align-items: flex-start;
+  }
+}
+@media (max-width: 700px) {
+  .resume2-section {
+    padding: 1.2rem 0.5rem;
+  }
+  .resume2-section .my-name {
+    font-size: 1.4rem;
+  }
+  .resume2-section .avatar {
+    width: 90px;
+    height: 90px;
+  }
+}
