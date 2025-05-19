@@ -23,11 +23,11 @@ function showPage(page) {
     main.innerHTML = `
       <h2>Tutorials</h2>
       <ul>
-        <li><a href="https://github.com/enkhe/HTML-CSS-JS/HTML" target="_blank">HTML Examples</a></li>
-        <li><a href="https://github.com/enkhe/HTML-CSS-JS/CSS" target="_blank">CSS Examples</a></li>
-        <li><a href="https://github.com/enkhe/HTML-CSS-JS/JS" target="_blank">JavaScript Examples</a></li>
-        <li><a href="https://github.com/enkhe/HTML-CSS-JS/React" target="_blank">React Examples</a></li>
-        <li><a href="https://github.com/enkhe/HTML-CSS-JS/React-Native" target="_blank">React Native Examples</a></li>
+        <li><a href="https://github.com/enkhe/HTML-CSS-JS/tree/main/HTML" target="_blank">HTML Examples</a></li>
+        <li><a href="https://github.com/enkhe/HTML-CSS-JS/tree/main/CSS" target="_blank">CSS Examples</a></li>
+        <li><a href="https://github.com/enkhe/HTML-CSS-JS/tree/main/JS" target="_blank">JavaScript Examples</a></li>
+        <li><a href="https://github.com/enkhe/HTML-CSS-JS/tree/main/React" target="_blank">React Examples</a></li>
+        <li><a href="https://github.com/enkhe/HTML-CSS-JS/tree/main/React-Native" target="_blank">React Native Examples</a></li>
       </ul>
     `;
   }
