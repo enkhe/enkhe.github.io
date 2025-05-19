@@ -52,7 +52,6 @@ class PageRenderer {
 
   renderResume() {
     this.main.innerHTML = `
-    
       <section class="resume2-section container">
         <div class="resume2-sidebar">
           <img src="assets/img-profile/Enkh.jpg" alt="avatar" class="avatar rounded-circle shadow">
