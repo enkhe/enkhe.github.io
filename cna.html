@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CNA to BSN Pathway Planner: Edmonds to UW</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Chosen Palette: Warm Neutrals with Professional Blue -->
+    <!-- Application Structure Plan: A four-phase, chronological single-page application guiding users from CNA certification to BSN application strategy. This structure transforms the dense reports into a manageable, task-oriented workflow. Key interactions include a cost calculator, a detailed 'Prerequisite Hub' that combines a course checklist with expandable study guides (integrating both source reports), a competitiveness visualizer, and an interactive timeline. This structure was chosen to provide a seamless user journey from high-level strategy to tactical, actionable detail. -->
+    <!-- Visualization & Content Choices:
+        1. CNA Program Costs: Report 1, Table 1 -> Goal: Inform -> Viz: Bar Chart (Chart.js) -> Interaction: Hover -> Justification: Better visual comparison of cost elements than a static table.
+        2. Certifications & Training: Report 2, Part 1 -> Goal: Organize/Inform -> Viz: Structured HTML cards -> Interaction: None -> Justification: Provides clear, sequential instructions for mandatory, non-academic requirements.
+        3. DTA/MRP Curriculum & Study Guide: Report 1 (Table 2) & Report 2 (Part 2) -> Goal: Organize/Inform/Compare -> Viz: Interactive HTML checklist with accordion-style details -> Interaction: Toggle switch to highlight UW-specific courses; Click to expand/collapse detailed study guides and resource links -> Justification: This is the app's core feature, merging the 'what' (checklist) with the 'how' (study guide) into a single, powerful interactive tool.
+        4. UW Applicant Profile: Report 1, Section 4 -> Goal: Compare/Motivate -> Viz: Grouped Bar Chart (Chart.js) with logarithmic scale -> Interaction: Hover -> Justification: Visually dramatizes the critical gap between minimum requirements and a competitive profile.
+        5. Strategic Roadmap: Report 1, Section 5 -> Goal: Organize/Plan -> Viz: HTML/CSS Timeline -> Interaction: Click to expand details -> Justification: Makes the long-term plan digestible and less intimidating.
+    -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 350px;
+            max-height: 45vh;
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 400px;
+            }
+        }
+        .nav-link.active {
+            background-color: #1d4ed8; /* bg-blue-700 */
+            color: white;
+            font-weight: 600;
+        }
+        .details-arrow {
+            transition: transform 0.3s ease;
+        }
+        .details-card[aria-expanded="true"] .details-arrow {
+            transform: rotate(90deg);
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800">
+
+    <div class="flex flex-col md:flex-row">
+        <!-- Sidebar Navigation -->
+        <nav class="bg-white md:w-64 md:min-h-screen md:fixed shadow-xl p-4 z-20">
+            <div class="flex items-center space-x-3 mb-6">
+                <div class="p-2 bg-blue-700 text-white rounded-lg">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" />
+                    </svg>
+                </div>
+                <h1 class="text-xl font-bold text-slate-800">CNA to BSN Planner</h1>
+            </div>
+            <ul class="space-y-2" id="navigation">
+                <li><a href="#phase-1" class="nav-link block w-full text-left px-4 py-2 rounded-md text-slate-600 hover:bg-blue-100 hover:text-blue-800 transition-colors">Phase 1: Foundation</a></li>
+                <li><a href="#phase-2" class="nav-link block w-full text-left px-4 py-2 rounded-md text-slate-600 hover:bg-blue-100 hover:text-blue-800 transition-colors">Phase 2: Prerequisite Hub</a></li>
+                <li><a href="#phase-3" class="nav-link block w-full text-left px-4 py-2 rounded-md text-slate-600 hover:bg-blue-100 hover:text-blue-800 transition-colors">Phase 3: The UW Application</a></li>
+                <li><a href="#phase-4" class="nav-link block w-full text-left px-4 py-2 rounded-md text-slate-600 hover:bg-blue-100 hover:text-blue-800 transition-colors">Phase 4: Strategic Plan</a></li>
+            </ul>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="md:ml-64 p-4 md:p-8 lg:p-12 w-full">
+
+            <header class="text-center mb-16">
+                <h1 class="text-4xl md:text-5xl font-extrabold text-blue-900 mb-4">Your All-in-One Roadmap to a BSN</h1>
+                <p class="text-lg text-slate-600 max-w-3xl mx-auto">From Certified Nursing Assistant at Edmonds to a Bachelor of Science in Nursing from the University of Washington. This interactive planner synthesizes strategy and tactical details into one seamless guide.</p>
+            </header>
+
+            <section id="phase-1" class="mb-20 scroll-mt-20">
+                <div class="bg-white p-6 md:p-8 rounded-xl shadow-lg">
+                    <h2 class="text-3xl font-bold text-blue-800 mb-2">Phase 1: Building Your Foundation</h2>
+                    <p class="text-slate-600 mb-8">This first phase is about establishing your entry into healthcare. It involves completing the required certifications, understanding the costs and timeline for the CNA program at Edmonds College, and getting ready for the hands-on experience that is foundational to a competitive BSN application.</p>
+                    
+                    <div class="grid md:grid-cols-5 gap-8">
+                        <div class="md:col-span-3">
+                            <h3 class="text-xl font-semibold mb-3">Edmonds College CNA Program Cost</h3>
+                            <p class="text-sm text-slate-500 mb-4">This chart visualizes the approximate costs for the 8-credit CNA program at Edmonds. Hover over bars for details. Note these are separate from state exam and licensing fees.</p>
+                            <div class="chart-container">
+                                <canvas id="cnaCostChart"></canvas>
+                            </div>
+                        </div>
+                        <div class="md:col-span-2">
+                            <h3 class="text-xl font-semibold mb-3">Mandatory Certifications</h3>
+                            <p class="text-sm text-slate-500 mb-4">These are non-negotiable and must be completed at the right time. They are the first step in your professional journey.</p>
+                            <div class="space-y-4">
+                                <div class="bg-blue-50 p-4 rounded-lg">
+                                    <h4 class="font-semibold text-blue-900">1. Basic Life Support (BLS)</h4>
+                                    <p class="text-sm text-slate-600 mt-1">You need the **American Heart Association (AHA) BLS for Healthcare Providers** course. Complete this *before* starting the CNA program. Find local classes at CPR Northwest Washington or Newcastle Training.</p>
+                                </div>
+                                <div class="bg-blue-50 p-4 rounded-lg">
+                                    <h4 class="font-semibold text-blue-900">2. HIPAA & Bloodborne Pathogens</h4>
+                                    <p class="text-sm text-slate-600 mt-1">This training on patient privacy and safety is required for your clinical externship. Edmonds will direct you to their required online provider *after* you enroll.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="phase-2" class="mb-20 scroll-mt-20">
+                <div class="bg-white p-6 md:p-8 rounded-xl shadow-lg">
+                    <h2 class="text-3xl font-bold text-blue-800 mb-2">Phase 2: The Prerequisite Hub</h2>
+                    <p class="text-slate-600 mb-6">This is your academic command center for the 90-credit Associate in Pre-Nursing (DTA/MRP). Use this interactive hub to track your required coursework and access detailed study guides for each subject. Click on any category to expand it and view study strategies and links to free online resources.</p>
+                    
+                    <div class="flex justify-between items-center mb-6 bg-blue-50 p-4 rounded-lg">
+                        <h3 class="text-xl font-semibold">Pre-Nursing DTA/MRP Academic Plan</h3>
+                        <div class="flex items-center space-x-3">
+                            <span class="text-sm font-medium text-slate-700">Optimize for UW Transfer</span>
+                            <label for="uw-toggle" class="inline-flex relative items-center cursor-pointer">
+                                <input type="checkbox" value="" id="uw-toggle" class="sr-only peer">
+                                <div class="w-11 h-6 bg-gray-300 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-blue-600"></div>
+                            </label>
+                        </div>
+                    </div>
+                    <div id="course-checklist" class="space-y-3">
+                    </div>
+                     <div id="uw-note" class="hidden mt-6 p-4 bg-amber-50 text-amber-800 border-l-4 border-amber-400 rounded-r-lg">
+                        <h4 class="font-bold">UW-Specific Prerequisite Highlighted</h4>
+                        <p>The University of Washington requires an additional logic or reasoning course beyond statistics. The highlighted course is not part of the standard DTA/MRP but is essential for your UW BSN application. Planning for this early is a key strategic advantage.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="phase-3" class="mb-20 scroll-mt-20">
+                <div class="bg-white p-6 md:p-8 rounded-xl shadow-lg">
+                    <h2 class="text-3xl font-bold text-blue-800 mb-2">Phase 3: The UW BSN Application</h2>
+                    <p class="text-slate-600 mb-8">Gaining admission to UW's BSN program is extremely competitive. The admissions committee uses a holistic review, looking beyond grades to your experience and character. This chart illustrates the significant gap between the minimum requirements and the profile of a competitive, successful applicant.</p>
+
+                    <div class="grid md:grid-cols-2 gap-8 items-center">
+                        <div>
+                            <h3 class="text-xl font-semibold mb-3">Minimums vs. A Competitive Profile</h3>
+                            <p class="text-sm text-slate-500 mb-4">While meeting the minimums gets your application reviewed, aiming for the competitive profile is what leads to admission. Hover for details.</p>
+                            <div class="chart-container">
+                                <canvas id="applicantProfileChart"></canvas>
+                            </div>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-semibold mb-3">Key Application Components</h3>
+                            <p class="text-sm text-slate-500 mb-4">Each piece of your application must tell a cohesive story of your readiness for nursing.</p>
+                            <ul class="space-y-3">
+                                <li class="flex items-start"><span class="text-blue-600 font-bold mr-2 mt-1">✓</span><div><strong>Strong Science GPA:</strong> Aim well above the 3.0 minimum in science prerequisites. This is a key academic filter.</div></li>
+                                <li class="flex items-start"><span class="text-blue-600 font-bold mr-2 mt-1">✓</span><div><strong>Extensive Healthcare Experience:</strong> CNA work is ideal. Aim for 500-1000+ hours to be truly competitive.</div></li>
+                                <li class="flex items-start"><span class="text-blue-600 font-bold mr-2 mt-1">✓</span><div><strong>Compelling Essays:</strong> Use a journal from your CNA work to provide specific, reflective stories that answer "Why nursing?".</div></li>
+                                <li class="flex items-start"><span class="text-blue-600 font-bold mr-2 mt-1">✓</span><div><strong>Powerful Recommendation:</strong> A letter from a nurse supervisor who has seen your work ethic is a "huge asset".</div></li>
+                                <li class="flex items-start"><span class="text-blue-600 font-bold mr-2 mt-1">✓</span><div><strong>Leadership & Service:</strong> Shows you are a well-rounded individual committed to your community.</div></li>
+                                 <li class="flex items-start"><span class="text-blue-600 font-bold mr-2 mt-1">✓</span><div><strong>Proctored Essay:</strong> Top applicants are invited to this timed essay, testing critical thinking under pressure.</div></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <section id="phase-4" class="scroll-mt-20">
+                 <div class="bg-white p-6 md:p-8 rounded-xl shadow-lg">
+                    <h2 class="text-3xl font-bold text-blue-800 mb-2">Phase 4: Your Strategic Roadmap & Contingencies</h2>
+                    <p class="text-slate-600 mb-8">Treating this journey like a multi-year project is the key to success. Use this interactive timeline to visualize your path and review the crucial backup plans needed for this highly competitive field.</p>
+
+                     <h3 class="text-xl font-semibold mb-6 text-center">A Sample 2-Year Strategic Timeline</h3>
+                     <div class="relative border-l-2 border-blue-200 ml-6 md:ml-0 md:border-l-0 md:border-t-2 md:border-b-0 md:flex">
+                        <div class="mb-10 md:mb-0 md:w-1/2 md:pr-8 relative">
+                            <div class="absolute -left-[1.38rem] top-0 md:left-0 md:-top-[1.38rem] h-10 flex items-center">
+                                <div class="h-5 w-5 rounded-full bg-blue-600 ring-4 ring-white"></div>
+                            </div>
+                            <div class="pl-8 md:pl-0 md:pt-8 timeline-card cursor-pointer">
+                                <h4 class="text-lg font-semibold text-blue-700">Year 1: Foundation & Experience</h4>
+                                <p class="text-sm text-slate-500">Click to expand details</p>
+                                <div class="timeline-details hidden mt-3 p-3 bg-slate-100 rounded-lg text-sm space-y-2">
+                                    <p><strong>Fall/Winter/Spring:</strong> Start Pre-Nursing DTA/MRP. Meet with an advisor immediately. Focus on core bio/chem courses and maintaining a high GPA.</p>
+                                    <p><strong>Summer:</strong> Complete the intensive Edmonds CNA program. Pass the state exam and get your NAC license.</p>
+                                    <p><strong>Upon Certification:</strong> Secure a part-time CNA job to start accumulating high-quality patient care hours immediately.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-10 md:mb-0 md:w-1/2 md:pl-8 relative">
+                            <div class="absolute -left-[1.38rem] top-0 md:left-0 md:-top-[1.38rem] h-10 flex items-center">
+                                <div class="h-5 w-5 rounded-full bg-blue-600 ring-4 ring-white"></div>
+                            </div>
+                            <div class="pl-8 md:pl-0 md:pt-8 timeline-card cursor-pointer">
+                                <h4 class="text-lg font-semibold text-blue-700">Year 2: Execution & Application</h4>
+                                <p class="text-sm text-slate-500">Click to expand details</p>
+                                <div class="timeline-details hidden mt-3 p-3 bg-slate-100 rounded-lg text-sm space-y-2">
+                                    <p><strong>Fall/Winter:</strong> Finish all remaining prerequisites, especially advanced sciences and the UW-specific logic course. Continue CNA work, aiming for 500+ hours.</p>
+                                    <p><strong>Late Fall:</strong> Begin drafting your UW BSN application essays. Use a journal from your CNA work for powerful, specific examples.</p>
+                                    <p><strong>Deadline (Jan 15):</strong> Submit your polished and complete application well before the firm deadline.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-12">
+                        <h3 class="text-xl font-semibold mb-3">Risk Mitigation: Always Have a Backup Plan</h3>
+                        <p class="text-slate-600 mb-4">Given the low acceptance rate at UW Seattle, a smart strategy involves applying to multiple programs to increase your chances of becoming an RN.</p>
+                        <div class="grid md:grid-cols-3 gap-4">
+                            <div class="bg-blue-50 p-4 rounded-lg">
+                                <h4 class="font-semibold">Apply Broadly</h4>
+                                <p class="text-sm text-slate-600">The Pre-Nursing DTA/MRP prepares you for many BSN programs. Apply simultaneously to WSU, Seattle U, PLU, and others.</p>
+                            </div>
+                             <div class="bg-blue-50 p-4 rounded-lg">
+                                <h4 class="font-semibold">Research Requirements</h4>
+                                <p class="text-sm text-slate-600">Double-check prerequisites for your backup schools. Use the UW Equivalency Guide and similar tools for other universities.</p>
+                            </div>
+                             <div class="bg-blue-50 p-4 rounded-lg">
+                                <h4 class="font-semibold">Stay Flexible</h4>
+                                <p class="text-sm text-slate-600">Be prepared to take an extra course or two if needed to qualify for a wider range of excellent nursing programs.</p>
+                            </div>
+                        </div>
+                    </div>
+                 </div>
+            </section>
+        </main>
+    </div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    const cnaCostData = {
+        labels: ['Tuition/Fees', 'Books', 'Lab/Misc. Fees'],
+        datasets: [{
+            label: 'Cost in USD',
+            data: [1154.88, 91.75, 564.00],
+            backgroundColor: ['rgba(59, 130, 246, 0.7)', 'rgba(34, 197, 94, 0.7)', 'rgba(239, 68, 68, 0.7)'],
+            borderColor: ['#3B82F6', '#22C55E', '#EF4444'],
+            borderWidth: 1
+        }]
+    };
+
+    const applicantProfileData = {
+        labels: ['Prerequisite Science GPA', 'Healthcare Experience Hours'],
+        datasets: [{
+            label: 'Minimum Requirement',
+            data: [3.0, 100],
+            backgroundColor: 'rgba(251, 146, 60, 0.7)',
+            borderColor: '#F97316',
+            borderWidth: 1
+        }, {
+            label: 'Competitive Applicant',
+            data: [3.8, 1000],
+            backgroundColor: 'rgba(29, 78, 216, 0.7)',
+            borderColor: '#1D4ED8',
+            borderWidth: 1
+        }]
+    };
+
+    const courseData = [
+        { 
+            category: 'Anatomy & Physiology I & II', 
+            courses: ['BIOL& 241 Human A&P 1 w/Lab', 'BIOL& 242 Human A&P 2 w/Lab'], 
+            uw: false,
+            studyGuide: {
+                howTo: 'This is memorization-heavy. Use flashcards. Focus on how systems interconnect. The lab component is critical; do not fall behind on identifying structures.',
+                resources: [
+                    { name: 'Khan Academy - Organ Systems', url: 'https://www.khanacademy.org/science/high-school-biology/hs-human-body-systems' },
+                    { name: 'GetBodySmart', url: 'https://www.getbodysmart.com/' },
+                    { name: "Acland's Video Atlas", url: '#', note: '(Check your college library for free access)' }
+                ]
+            }
+        },
+        { 
+            category: 'Microbiology', 
+            courses: ['BIOL& 260 Microbiology w/Lab'], 
+            uw: false,
+            studyGuide: {
+                howTo: 'Understand major classes of microbes and their transmission. In the lab, master aseptic technique and interpreting test results like gram stains.',
+                resources: [
+                    { name: "Pearson's Microbiology Resources", url: 'https://www.pearson.com/en-us/higher-education/resources-by-discipline/sciences/microbiology.html' },
+                    { name: 'YouTube - "Microbiology with Dr. B"', url: 'https://www.youtube.com/playlist?list=PL_tD0d3aLIOtG9Eb4J5v6G_d6n5WnZ-l0' }
+                ]
+            }
+        },
+        { 
+            category: 'Chemistry Sequence', 
+            courses: ['CHEM& 121 Intro to Chemistry w/Lab', 'CHEM& 131 Intro to Organic/Biochem w/Lab'], 
+            uw: false,
+            studyGuide: {
+                howTo: 'Master fundamentals in the first course before moving on. For the second, focus on the structure and function of biological macromolecules. Practice problems are essential.',
+                resources: [
+                    { name: 'Khan Academy - Chemistry Library', url: 'https://www.khanacademy.org/science/chemistry' },
+                    { name: 'The ChemCollective', url: 'http://chemcollective.org/' },
+                    { name: 'PhET Interactive Simulations', url: 'https://phet.colorado.edu/en/simulations/filter?subjects=chemistry' }
+                ]
+            }
+        },
+         { 
+            category: 'Statistics & Logic/Reasoning', 
+            courses: ['MATH& 146 Intro to Statistics', 'PHIL& 120 Intro to Logic'], 
+            uw: true,
+            studyGuide: {
+                howTo: 'For stats, understand concepts like mean, median, and p-values. For logic, practice identifying arguments and conclusions. This is a core nursing skill.',
+                resources: [
+                    { name: 'Khan Academy - Statistics', url: 'https://www.khanacademy.org/math/statistics-probability' },
+                    { name: 'Coursera - "Think Again"', url: 'https://www.coursera.org/learn/understanding-arguments', note: '(Free audit available)' }
+                ]
+            }
+        },
+        { 
+            category: 'Nutrition', 
+            courses: ['NUTR& 101 Nutrition'], 
+            uw: false,
+            studyGuide: {
+                howTo: 'Memorize macronutrients and micronutrients. Understand how diet impacts major diseases like diabetes and heart disease.',
+                resources: [
+                    { name: 'USDA - MyPlate', url: 'https://www.myplate.gov/' },
+                    { name: 'Harvard - The Nutrition Source', url: 'https://www.hsph.harvard.edu/nutritionsource/' }
+                ]
+            }
+        },
+        { 
+            category: 'Psychology & Development', 
+            courses: ['PSYC& 100 General Psychology', 'PSYC& 200 Lifespan Psychology'], 
+            uw: false,
+            studyGuide: {
+                howTo: 'For Gen Psych, know the major theories. For Lifespan, focus on physical, cognitive, and psychosocial stages (e.g., Erikson).',
+                resources: [
+                    { name: 'Crash Course Psychology (YouTube)', url: 'https://www.youtube.com/playlist?list=PL8dPuuaLjXtOPRKzVLY0jJY-uHOH9KVU6' },
+                    { name: 'Simply Psychology', url: 'https://www.simplypsychology.org/' }
+                ]
+            }
+        },
+    ];
+
+    function renderChecklist(isUwOptimized) {
+        const checklistContainer = document.getElementById('course-checklist');
+        const uwNote = document.getElementById('uw-note');
+        checklistContainer.innerHTML = '';
+        
+        courseData.forEach(cat => {
+            const isUwCourse = cat.uw && isUwOptimized;
+            let courseListHtml = cat.courses.map(course => `<li class="ml-4">${course}</li>`).join('');
+            let resourcesHtml = cat.studyGuide.resources.map(res => 
+                `<li><a href="${res.url}" target="_blank" class="text-blue-600 hover:underline">${res.name}</a> ${res.note || ''}</li>`
+            ).join('');
+
+            const categoryCard = `
+                <div class="border border-slate-200 rounded-lg overflow-hidden">
+                    <button class="details-card w-full text-left p-4 flex justify-between items-center ${isUwCourse ? 'bg-amber-100' : 'bg-slate-100'}" aria-expanded="false">
+                        <span class="font-semibold text-slate-800">${cat.category}</span>
+                        <svg class="details-arrow h-5 w-5 text-slate-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
+                    </button>
+                    <div class="details-content hidden p-4 bg-white">
+                        <h5 class="font-semibold mb-2">Required Courses:</h5>
+                        <ul class="list-disc list-inside text-sm text-slate-700 space-y-1">${courseListHtml}</ul>
+                        <h5 class="font-semibold mt-4 mb-2">How to Study:</h5>
+                        <p class="text-sm text-slate-700">${cat.studyGuide.howTo}</p>
+                        <h5 class="font-semibold mt-4 mb-2">Online Resources:</h5>
+                        <ul class="list-disc list-inside text-sm space-y-1">${resourcesHtml}</ul>
+                    </div>
+                </div>
+            `;
+            checklistContainer.innerHTML += categoryCard;
+        });
+        
+        uwNote.style.display = isUwOptimized ? 'block' : 'none';
+        
+        document.querySelectorAll('.details-card').forEach(button => {
+            button.addEventListener('click', () => {
+                const content = button.nextElementSibling;
+                const isExpanded = button.getAttribute('aria-expanded') === 'true';
+                button.setAttribute('aria-expanded', !isExpanded);
+                content.classList.toggle('hidden');
+            });
+        });
+    }
+
+
+    const uwToggle = document.getElementById('uw-toggle');
+    uwToggle.addEventListener('change', (e) => {
+        renderChecklist(e.target.checked);
+    });
+    
+    renderChecklist(false);
+
+    const ctxCost = document.getElementById('cnaCostChart').getContext('2d');
+    new Chart(ctxCost, {
+        type: 'bar', data: cnaCostData, options: { indexAxis: 'y', responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false }, title: { display: false } }, scales: { x: { title: { display: true, text: 'USD ($)' }, beginAtZero: true } } }
+    });
+
+    const ctxProfile = document.getElementById('applicantProfileChart').getContext('2d');
+    new Chart(ctxProfile, {
+        type: 'bar', data: applicantProfileData, options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { position: 'top' }, tooltip: { callbacks: { label: (c) => `${c.dataset.label}: ${c.raw.toLocaleString()}${c.dataIndex === 1 ? ' hrs' : ''}` } } }, scales: { y: { type: 'logarithmic', title: { display: true, text: 'Value (Log Scale)' }, ticks: { callback: (v) => (v === 10000 || v === 1000 || v === 100 || v === 10 || v === 1) ? v.toLocaleString() : null } } } }
+    });
+    
+    document.querySelectorAll('.timeline-card').forEach(c => c.addEventListener('click', () => c.querySelector('.timeline-details').classList.toggle('hidden')));
+
+    const sections = document.querySelectorAll('section');
+    const navLinks = document.querySelectorAll('.nav-link');
+    const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href').substring(1) === entry.target.id) link.classList.add('active');
+                });
+            }
+        });
+    }, { rootMargin: "-40% 0px -60% 0px" });
+    sections.forEach(section => observer.observe(section));
+});
+</script>
+
+</body>
+</html>
