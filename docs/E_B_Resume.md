@@ -4,16 +4,7 @@
 
 ## Professional Summary
 
-Journey .NET Application Developer with 6+ years of progressive experience at the
-Washington State Department of Labor & Industries, serving as technical lead for
-enterprise application development, architecture alignment, and cross-functional
-system integration. Deep expertise in C#/.NET, T-SQL stored procedures, WCF/REST
-web services, and secure Microsoft SDL/SDLC practices. Proven record of mentoring
-co-developers, sharing knowledge through pair programming and code reviews,
-enforcing coding standards, and delivering mission-critical solutions across
-authentication, ETL automation, secure financial transactions, and CI/CD pipeline
-modernization. Certified Scrum Master. Currently pursuing an M.S. in Computer
-Science with an AI/ML focus.
+Journey .NET Application Developer with 7+ years of progressive experience at the Washington State Department of Labor & Industries, serving as technical lead for enterprise application development, architecture alignment, and cross-functional system integration. Deep expertise in C#/.NET, T-SQL stored procedures, WCF/REST web services, and secure Microsoft SDL/SDLC practices. Proven record of mentoring co-developers, sharing knowledge through pair programming and code reviews, enforcing coding standards, and delivering mission-critical solutions across authentication, ETL automation, secure financial transactions, and CI/CD pipeline modernization. Certified Scrum Master. Currently pursuing an M.S. in Computer Science with an AI/ML focus.
 
 ---
 

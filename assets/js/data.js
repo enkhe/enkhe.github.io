@@ -12,16 +12,10 @@ export const PROFILE = {
   avatar: 'assets/img-profile/Enkh.jpg',
   tagline:
     'Technical lead building secure, mission-critical .NET systems — modernizing CI/CD, federated identity, and ETL automation while pursuing an M.S. in CS with an AI/ML focus.',
-  bio: `Journey .NET Application Developer with 6+ years of progressive experience at the
-        Washington State Department of Labor & Industries, serving as technical lead for
-        enterprise application development, architecture alignment, and cross-functional
-        system integration. Deep expertise in C#/.NET, T-SQL stored procedures, WCF/REST
-        web services, and secure Microsoft SDL/SDLC practices. Certified Scrum Master.
-        Currently pursuing an M.S. in Computer Science with an AI/ML focus.`,
-};
+  bio: `Journey .NET Application Developer with 7+ years of progressive experience at the Washington State Department of Labor & Industries, serving as technical lead for enterprise application development, architecture alignment, and cross-functional system integration. Deep expertise in C#/.NET, T-SQL stored procedures, WCF/REST web services, and secure Microsoft SDL/SDLC practices. Certified Scrum Master. Currently pursuing an M.S. in Computer Science with an AI/ML focus.`, };
 
 export const STATS = [
-  { num: '6+',   label: 'Years engineering' },
+  { num: '7+',   label: 'Years engineering' },
   { num: 'Lead', label: 'Technical lead — enterprise .NET' },
   { num: 'CSM',  label: 'Certified Scrum Master' },
   { num: 'M.S.', label: 'CS · AI/ML in progress' },

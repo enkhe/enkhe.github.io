@@ -658,12 +658,10 @@ small { color: var(--fg-subtle); }
   padding: var(--sp-3);
   border-radius: 50%;
   background: conic-gradient(from 180deg, var(--brand), var(--accent), var(--brand));
-  animation: spin 12s linear infinite;
 }
 .hero__avatar-wrap > img {
   border-color: var(--bg-0);
 }
-@keyframes spin { to { transform: rotate(360deg); } }
 
 /* Stats */
 .stats { display: grid; gap: var(--sp-4); grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); }
