@@ -26,11 +26,12 @@ export function renderHome(outlet) {
   outlet.innerHTML = `
     <section class="hero">
       <div class="hero__col">
-        <span class="page__eyebrow">Hello, I'm ${PROFILE.shortName}</span>
-        <h1 class="hero__title">Building <em>thoughtful</em> software for the enterprise.</h1>
+        <span class="page__eyebrow">Hello, I'm ${PROFILE.shortName} — ${PROFILE.title}</span>
+        <h1 class="hero__title">Leading <em>secure, mission-critical</em> .NET systems — and learning AI/ML next.</h1>
         <p class="hero__lead">${PROFILE.tagline}</p>
         <div class="hero__cta">
           <a class="btn btn--primary" href="#/projects">${ICONS.briefcase} View projects</a>
+          <a class="btn btn--ghost" href="#/resume">${ICONS.resume} Read resume</a>
           <a class="btn btn--ghost" href="#/contact">${ICONS.mail} Get in touch</a>
         </div>
       </div>

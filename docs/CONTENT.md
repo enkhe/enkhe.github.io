@@ -11,7 +11,7 @@ export const PROFILE = {
   shortName: 'Enkh',
   title: 'Software Developer · .NET / Java',
   location: 'Shoreline, WA',
-  email: 'enkhe@live.com',
+  email: 'admin@enkude.com',
   github: 'https://github.com/enkhe',
   site: 'https://enkhe.github.io',
   avatar: 'assets/img-profile/Enkh.jpg',

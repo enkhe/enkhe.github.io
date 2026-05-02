@@ -1,5 +1,6 @@
 import {
   PROFILE, EXPERIENCE, EDUCATION, SKILLS, EXPERTISE, SUMMARY_BULLETS,
+  ACADEMIC_PROJECTS, CERTIFICATIONS,
 } from '../data.js';
 import { ICONS, icon } from '../icons.js';
 
@@ -36,6 +37,36 @@ const summaryItem = (text) => `
     <span class="summary-list__check" aria-hidden="true">${icon('check')}</span>
     <span>${text}</span>
   </li>`;
+
+const academicCard = (p) => `
+  <article class="card glass project-card">
+    <div class="card__head">
+      <div class="card__icon">${ICONS[p.icon] || ICONS.spark}</div>
+      <h3 class="card__title">${p.title}</h3>
+    </div>
+    <div class="muted" style="font-size:var(--fs-sm);margin-bottom:0.5rem;">${p.course}</div>
+    <p class="card__body">${p.summary}</p>
+    <div class="project-card__tags">
+      ${p.tags.map((t) => `<span class="chip">${t}</span>`).join('')}
+    </div>
+  </article>`;
+
+const certCard = (c) => `
+  <article class="card glass">
+    <div class="card__head">
+      <div class="card__icon">${ICONS.award}</div>
+      <h3 class="card__title">${c.title}</h3>
+    </div>
+    <p class="card__body">
+      ${c.issuer} · ${c.date}${c.credentialId ? ` · Credential ID ${c.credentialId}` : ''}
+    </p>
+    ${c.verifyUrl ? `
+      <div class="card__foot">
+        <a class="btn btn--ghost btn--sm" href="${c.verifyUrl}" target="_blank" rel="noopener noreferrer">
+          ${ICONS.external}<span>Verify credential</span>
+        </a>
+      </div>` : ''}
+  </article>`;
 
 export function renderResume(outlet) {
   outlet.innerHTML = `
@@ -75,9 +106,19 @@ export function renderResume(outlet) {
           <ul class="summary-list bare-list">${SUMMARY_BULLETS.map(summaryItem).join('')}</ul>
         </section>
 
+        <section class="section" aria-labelledby="academic-title">
+          <h2 id="academic-title" class="section__title">${ICONS.book} Academic Projects — M.S. Computer Science</h2>
+          <div class="grid grid--2">${ACADEMIC_PROJECTS.map(academicCard).join('')}</div>
+        </section>
+
         <section class="section" aria-labelledby="edu-title">
           <h2 id="edu-title" class="section__title">${ICONS.book} Education</h2>
           <div class="timeline">${EDUCATION.map(expItem).join('')}</div>
+        </section>
+
+        <section class="section" aria-labelledby="cert-title">
+          <h2 id="cert-title" class="section__title">${ICONS.award} Certifications</h2>
+          <div class="grid grid--2">${CERTIFICATIONS.map(certCard).join('')}</div>
         </section>
 
         <section class="section" aria-labelledby="skills-title">
